@@ -35,6 +35,10 @@
         .hero-title p { font-size: 14px; letter-spacing: 6px; text-transform: uppercase; color: #718096; padding-left: 3px; }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 100px 20px; }
+        
+        /* Corectare pentru ca titlurile să nu fie acoperite de bara fixă de sus când se dă click pe meniu */
+        .container[id], div[id] { scroll-margin-top: 90px; }
+
         .section-title { font-family: var(--font-title); font-size: 32px; font-weight: 400; margin-bottom: 60px; text-align: center; }
 
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
