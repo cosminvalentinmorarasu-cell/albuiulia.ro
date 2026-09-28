@@ -164,7 +164,31 @@
         }
 
         .contact-wrap { max-width: 500px; margin: 0 auto; text-align: center; }
-        .contact-wrap p { color: var(--text-muted); margin-bottom: 40px; font-size: 15px; }
+        .contact-wrap p { color: var(--text-muted); margin-bottom: 25px; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; font-weight: 300; }
+        
+        .contact-pointer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        @keyframes pointDown {
+            0%, 100% { transform: translateY(0); opacity: 0.4; }
+            50% { transform: translateY(6px); opacity: 1; }
+        }
+
+        .contact-pointer svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--text-muted);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            animation: pointDown 1.8s ease-in-out infinite;
+        }
+
         .btn-facebook { display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 15px 35px; background: transparent; color: var(--text-muted); border: 1px solid var(--border-color); border-radius: 4px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; text-decoration: none; transition: all 0.3s ease; }
         .btn-facebook:hover { background: #1877F2; color: #fff; border-color: #1877F2; }
 
@@ -231,7 +255,7 @@
     <div class="container" id="expozitii" style="padding-top: 0;">
         <h2 class="section-title">Expoziții</h2>
         <div class="exhibitions-list">
-                  
+                
             
             <div class="exhibition-item">
                 <span class="exhibition-meta">august 2026 — Galeriile de Artă ale Municipiului Iași „Dan Hatmanu”, Pasaj Sf. Vineri</span>
@@ -276,6 +300,9 @@
         <h2 class="section-title">Contact</h2>
         <div class="contact-wrap">
             <p>Pentru noutăți sau colaborări, vă invit pe pagina mea de Facebook.</p>
+            <div class="contact-pointer">
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
             <a href="https://www.facebook.com/profile.php?id=100069505965412" target="_blank" class="btn-facebook">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                 Vizitează pagina mea de Facebook
