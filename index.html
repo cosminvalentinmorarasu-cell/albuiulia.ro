@@ -336,5 +336,60 @@
 
             const img = document.createElement('img');
             img.src = filename;
-            img.alt = `Tablou ${filename.replace('.jpg', '')
+            img.alt = `Tablou ${filename.replace('.jpg', '')}`;
+
+            img.onload = () => {
+                const imgIndex = activeImages.length;
+                activeImages.push(filename);
+                img.onclick = () => openLightbox(imgIndex);
+                item.appendChild(img);
+                gallery.appendChild(item);
+            };
+
+            img.onerror = () => {
+                item.remove();
+            };
+        });
+
+        function openLightbox(index) {
+            currentImageIndex = index;
+            updateLightboxContent();
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+
+        function closeLightbox(e) {
+            if (e.target.id === 'lightbox' || e.target.className === 'lightbox-close') {
+                document.getElementById('lightbox').style.display = 'none';
+            }
+        }
+
+        function changeImage(direction, e) {
+            e.stopPropagation();
+            currentImageIndex += direction;
+            
+            if (currentImageIndex >= activeImages.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = activeImages.length - 1;
+            }
+            updateLightboxContent();
+        }
+
+        function updateLightboxContent() {
+            const imgSrc = activeImages[currentImageIndex];
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('img-counter').innerText = `${currentImageIndex + 1} / ${activeImages.length}`;
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('lightbox').style.display === 'flex') {
+                if (e.key === 'ArrowLeft') changeImage(-1, e);
+                if (e.key === 'ArrowRight') changeImage(1, e);
+                if (e.key === 'Escape') closeLightbox({target: {id: 'lightbox'}});
+            }
+        });
+    </script>
+
+</body>
+</html>
 ```
