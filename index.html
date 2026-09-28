@@ -1,9 +1,10 @@
+```html
 <!DOCTYPE html>
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IULIA ALBU - Pictor</title>
+    <title>Albu Iulia - Pictor</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -215,28 +216,56 @@
 
     <script>
         const gallery = document.getElementById('galleryContainer');
-        const totalImages = 56;
+
+        const galleryImages = [
+            '5.jpg',
+            '7.jpg',
+            '8.jpg',
+            '11.jpg',
+            '13.jpg',
+            '16.jpg',
+            '19.jpg',
+            '22.jpg',
+            '23.jpg',
+            '24.jpg',
+            '25.jpg',
+            '31.jpg',
+            '33.jpg',
+            '34.jpg',
+            '36.jpg',
+            '43.jpg',
+            '53.jpg',
+            '57.jpg',
+            '58.jpg',
+            '59.jpg',
+            '60.jpg',
+            '63.jpg',
+            '64.jpg'
+        ];
+
         let currentImageIndex = 0;
         let activeImages = [];
 
-        for (let i = 1; i <= totalImages; i++) {
+        galleryImages.forEach((filename) => {
             const item = document.createElement('div');
             item.className = 'gallery-item';
-            
+
             const img = document.createElement('img');
-            img.src = `${i}.jpg`;
-            img.alt = `Tablou ${i}`;
-            
+            img.src = filename;
+            img.alt = `Tablou ${filename.replace('.jpg', '')}`;
+
             img.onload = () => {
                 const imgIndex = activeImages.length;
-                activeImages.push(`${i}.jpg`);
+                activeImages.push(filename);
                 img.onclick = () => openLightbox(imgIndex);
                 item.appendChild(img);
                 gallery.appendChild(item);
             };
-            
-            img.onerror = () => { item.remove(); };
-        }
+
+            img.onerror = () => {
+                item.remove();
+            };
+        });
 
         function openLightbox(index) {
             currentImageIndex = index;
@@ -279,3 +308,4 @@
 
 </body>
 </html>
+```
